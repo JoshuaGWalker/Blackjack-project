@@ -1,0 +1,23 @@
+cardtable{
+    border: 10px solid green;
+    display: inline-block;
+}
+cardtable card {
+    border: 5px solid salmon;
+    border-radius: 10px;
+    display: inline-block;
+    height: 300px;
+    width: 200px;
+    background-size: cover;
+}
+card[suite="clubs"][rank="2"] {
+        background-image: url('./images/2_of_clubs.png');
+}
+card[suite="hearts"][rank="queen"] {
+    background-image: url('./images/queen_of_hearts.png');
+    
+}
+card:not([suite]),
+card:not([rank]) {
+    background-image: url('./images/back@2x.png');
+}
