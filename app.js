@@ -1,10 +1,6 @@
-
 var element = document.getElementById("mystery_card");
+var card_drawn = document.getElementById("card_from_stack");
 
-element.addEventListener("click", function() {
-  element.setAttribute("suite", "hearts");
-  element.setAttribute("rank", "2");
-});
 var stack_of_cards =  [
 {suite : "hearts", rank : "2"}, 
 {suite : "hearts", rank : "3"},
@@ -62,9 +58,21 @@ var stack_of_cards =  [
 {suite : "clubs", rank : "king"},
 {suite : "clubs", rank : "ace"},
 ];
-var card_drawn = document.getElementById("card_from_stack");
-var random_card = Math.round(Math.random() * 52);
+
 card_drawn.addEventListener("click", function() {
+  var random_card = Math.round(Math.random() * 51);
   card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
   card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
+});
+var dealed_card = document.getElementById("dealt");
+
+dealed_card.addEventListener("click", function() {
+  var random_card_2 = Math.round(Math.random()*51);
+  element.setAttribute("suite", stack_of_cards[random_card_2].suite);
+  element.setAttribute("rank", stack_of_cards[random_card_2].rank);
+});
+var reload = document.getElementById("reset");
+reload.addEventListener("click", function(){
+card_drawn.setAttribute("suite",null);
+card_drawn.setAttribute("rank",null);
 });
