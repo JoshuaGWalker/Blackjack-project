@@ -1,5 +1,5 @@
-var element = document.getElementById("mystery_card");
-var card_drawn = document.getElementById("card_from_stack");
+
+
 
 var stack_of_cards =  [
 {suite : "hearts", rank : "2"}, 
@@ -58,11 +58,19 @@ var stack_of_cards =  [
 {suite : "clubs", rank : "king"},
 {suite : "clubs", rank : "ace"},
 ];
-
+var card_drawn = document.getElementById("card_from_stack");
+var times_clicked = 0;
 card_drawn.addEventListener("click", function() {
-  var random_card = Math.round(Math.random() * 51);
-  card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
+  if(times_clicked<52){
+  var random_card = Math.round(Math.random() * (51-times_clicked));
+  times_clicked += 1;
   card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
+  card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
+  stack_of_cards.splice(random_card,1);
+  }
+  else{
+    alert("End of stack");
+  }
 });
 var dealed_card = document.getElementById("dealt");
 
