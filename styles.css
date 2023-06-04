@@ -176,8 +176,10 @@ background-image: url('./images/king_of_diamonds.png');
 card[suite="diamonds"][rank="ace"] {
 background-image: url('./images/ace_of_diamonds.png');
 }
-
+card[suite=""][rank=""] {
+    background-image: url('./images/card_back_red.png');
+    }
 card:not([suite]),
 card:not([rank]) {
-    background-image: url('./images/back@2x.png');
+    background-image: url('./images/card_back_red.png')
 }
