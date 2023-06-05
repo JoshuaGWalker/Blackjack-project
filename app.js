@@ -1,6 +1,4 @@
 
-
-
 var stack_of_cards =  [
 {suite : "hearts", rank : "2"}, 
 {suite : "hearts", rank : "3"},
@@ -58,29 +56,32 @@ var stack_of_cards =  [
 {suite : "clubs", rank : "king"},
 {suite : "clubs", rank : "ace"},
 ];
-var card_drawn = document.getElementById("card_from_stack");
+
+var first_card_drawn = document.getElementById("first_card_drawn");
 var times_clicked = 0;
-card_drawn.addEventListener("click", function() {
+first_card_drawn.addEventListener("click", function() {
   if(times_clicked<52){
   var random_card = Math.round(Math.random() * (51-times_clicked));
   times_clicked += 1;
-  card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
-  card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
+  first_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
+  first_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
   stack_of_cards.splice(random_card,1);
   }
   else{
     alert("End of stack");
   }
 });
-var dealed_card = document.getElementById("dealt");
 
-dealed_card.addEventListener("click", function() {
-  var random_card_2 = Math.round(Math.random()*51);
-  element.setAttribute("suite", stack_of_cards[random_card_2].suite);
-  element.setAttribute("rank", stack_of_cards[random_card_2].rank);
-});
-var reload = document.getElementById("reset");
-reload.addEventListener("click", function(){
-card_drawn.setAttribute("suite",null);
-card_drawn.setAttribute("rank",null);
+var dealers_card = document.getElementById("dealers_card");
+dealers_card.addEventListener("click", function() {
+  if(times_clicked<52){
+  var random_card_3 = Math.round(Math.random() * (51-times_clicked));
+  times_clicked += 1;
+  dealers_card.setAttribute("rank", stack_of_cards[random_card_3].rank);
+  dealers_card.setAttribute("suite", stack_of_cards[random_card_3].suite);
+  stack_of_cards.splice(random_card_3,1);
+  }
+  else{
+    alert("End of stack");
+  }
 });
