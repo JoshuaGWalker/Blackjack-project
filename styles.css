@@ -1,6 +1,7 @@
 cardtable{
     border: 10px solid green;
-    display: inline-block;
+    display:flex;
+    justify-content:center
 }
 cardtable card {
     border: 5px solid salmon;
