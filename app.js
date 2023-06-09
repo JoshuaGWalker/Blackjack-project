@@ -71,15 +71,42 @@ first_card_drawn.addEventListener("click", function() {
     alert("End of stack");
   }
 });
+var second_card_drawn = document.getElementById("second_card_drawn");
+second_card_drawn.addEventListener("click", function() {
+  if(times_clicked<52){
+  random_card = Math.round(Math.random() * (51-times_clicked));
+  times_clicked += 1;
+  second_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
+  second_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
+  stack_of_cards.splice(random_card,1);
+  }
+  else{
+    alert("End of stack");
+  }
+});
 
 var dealers_card = document.getElementById("dealers_card");
 dealers_card.addEventListener("click", function() {
   if(times_clicked<52){
-  var random_card_3 = Math.round(Math.random() * (51-times_clicked));
+  random_card = Math.round(Math.random() * (51-times_clicked));
   times_clicked += 1;
-  dealers_card.setAttribute("rank", stack_of_cards[random_card_3].rank);
-  dealers_card.setAttribute("suite", stack_of_cards[random_card_3].suite);
-  stack_of_cards.splice(random_card_3,1);
+  dealers_card.setAttribute("rank", stack_of_cards[random_card].rank);
+  dealers_card.setAttribute("suite", stack_of_cards[random_card].suite);
+  stack_of_cards.splice(random_card,1);
+  }
+  else{
+    alert("End of stack");
+  }
+});
+
+var dealers_card_2 = document.getElementById("dealers_card_2");
+dealers_card_2.addEventListener("click", function() {
+  if(times_clicked<52){
+  random_card = Math.round(Math.random() * (51-times_clicked));
+  times_clicked += 1;
+  dealers_card_2.setAttribute("rank", stack_of_cards[random_card].rank);
+  dealers_card_2.setAttribute("suite", stack_of_cards[random_card].suite);
+  stack_of_cards.splice(random_card,1);
   }
   else{
     alert("End of stack");
