@@ -59,12 +59,18 @@ var stack_of_cards =  [
 
 var first_card_drawn = document.getElementById("first_card_drawn");
 var times_clicked = 0;
+var curVal = 0
+document.getElementById("value").innerHTML = "Current value"+curVal;
 first_card_drawn.addEventListener("click", function() {
   if(times_clicked<52){
   var random_card = Math.round(Math.random() * (51-times_clicked));
   times_clicked += 1;
   first_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
   first_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
+  if(stack_of_cards[random_card].rank==="2"){
+    curVal+=2
+    document.getElementById("value").innerHTML = "Current value: "+curVal;
+  }
   stack_of_cards.splice(random_card,1);
   }
   else{
@@ -112,3 +118,4 @@ dealers_card_2.addEventListener("click", function() {
     alert("End of stack");
   }
 });
+
