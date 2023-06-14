@@ -59,18 +59,14 @@ var stack_of_cards =  [
 
 var first_card_drawn = document.getElementById("first_card_drawn");
 var times_clicked = 0;
-var curVal = 0
-document.getElementById("value").innerHTML = "Current value"+curVal;
+var curVal = 0;
 first_card_drawn.addEventListener("click", function() {
   if(times_clicked<52){
   var random_card = Math.round(Math.random() * (51-times_clicked));
   times_clicked += 1;
   first_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
   first_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
-  if(stack_of_cards[random_card].rank==="2"){
-    curVal+=2
-    document.getElementById("value").innerHTML = "Current value: "+curVal;
-  }
+  addToValue("value",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
@@ -84,6 +80,7 @@ second_card_drawn.addEventListener("click", function() {
   times_clicked += 1;
   second_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
   second_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
+  addToValue("value",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
@@ -98,6 +95,7 @@ dealers_card.addEventListener("click", function() {
   times_clicked += 1;
   dealers_card.setAttribute("rank", stack_of_cards[random_card].rank);
   dealers_card.setAttribute("suite", stack_of_cards[random_card].suite);
+  addToValue("value2",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
@@ -112,10 +110,55 @@ dealers_card_2.addEventListener("click", function() {
   times_clicked += 1;
   dealers_card_2.setAttribute("rank", stack_of_cards[random_card].rank);
   dealers_card_2.setAttribute("suite", stack_of_cards[random_card].suite);
+  addToValue("value2",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
     alert("End of stack");
   }
 });
+function addToValue(idOfValue,random_card){
+  //going to make it a binary search soon to speed up.
+    if(stack_of_cards[random_card].rank==="2"){
+    curVal+=2;
+    document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+    }else if(stack_of_cards[random_card].rank==="3"){
+      curVal+=3;
+      document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+      }else if(stack_of_cards[random_card].rank==="4"){
+        curVal+=4;
+        document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+        }else if(stack_of_cards[random_card].rank==="5"){
+          curVal+=5;
+          document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+          }else if(stack_of_cards[random_card].rank==="6"){
+            curVal+=6;
+            document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+            }else if(stack_of_cards[random_card].rank==="7"){
+              curVal+=7;
+              document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+              }else if(stack_of_cards[random_card].rank==="8"){
+                curVal+=8;
+                document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                }else if(stack_of_cards[random_card].rank==="9"){
+                  curVal+=9;
+                  document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                  }else if(stack_of_cards[random_card].rank==="10"){
+                    curVal+=10;
+                    document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                    }else if(stack_of_cards[random_card].rank==="jack"){
+                      curVal+=10;
+                      document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                      }else if(stack_of_cards[random_card].rank==="queen"){
+                        curVal+=10;
+                        document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                        }else if(stack_of_cards[random_card].rank==="king"){
+                          curVal+=10;
+                          document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                          }else if(stack_of_cards[random_card].rank==="ace"){
+                            curVal+=10;
+                            document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                            }
 
+
+}
