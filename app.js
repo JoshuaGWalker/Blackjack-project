@@ -1,4 +1,3 @@
-
 var stack_of_cards =  [
 {suite : "hearts", rank : "2"}, 
 {suite : "hearts", rank : "3"},
@@ -56,7 +55,6 @@ var stack_of_cards =  [
 {suite : "clubs", rank : "king"},
 {suite : "clubs", rank : "ace"},
 ];
-
 var first_card_drawn = document.getElementById("first_card_drawn");
 var times_clicked = 0;
 var curVal = 0;
@@ -66,7 +64,7 @@ first_card_drawn.addEventListener("click", function() {
   times_clicked += 1;
   first_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
   first_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
-  addToValue("value",random_card);
+  addToYourValue("value",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
@@ -80,14 +78,14 @@ second_card_drawn.addEventListener("click", function() {
   times_clicked += 1;
   second_card_drawn.setAttribute("rank", stack_of_cards[random_card].rank);
   second_card_drawn.setAttribute("suite", stack_of_cards[random_card].suite);
-  addToValue("value",random_card);
+  addToYourValue("value",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
     alert("End of stack");
   }
 });
-
+var curValOfDealer = 0;
 var dealers_card = document.getElementById("dealers_card");
 dealers_card.addEventListener("click", function() {
   if(times_clicked<52){
@@ -95,7 +93,7 @@ dealers_card.addEventListener("click", function() {
   times_clicked += 1;
   dealers_card.setAttribute("rank", stack_of_cards[random_card].rank);
   dealers_card.setAttribute("suite", stack_of_cards[random_card].suite);
-  addToValue("value2",random_card);
+  addToValueOfDealer("value2",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
@@ -104,20 +102,26 @@ dealers_card.addEventListener("click", function() {
 });
 
 var dealers_card_2 = document.getElementById("dealers_card_2");
+curValOfDealer = 0;
 dealers_card_2.addEventListener("click", function() {
   if(times_clicked<52){
   random_card = Math.round(Math.random() * (51-times_clicked));
   times_clicked += 1;
   dealers_card_2.setAttribute("rank", stack_of_cards[random_card].rank);
   dealers_card_2.setAttribute("suite", stack_of_cards[random_card].suite);
-  addToValue("value2",random_card);
+  addToValueOfDealer("value2",random_card);
   stack_of_cards.splice(random_card,1);
   }
   else{
     alert("End of stack");
   }
 });
-function addToValue(idOfValue,random_card){
+var hitButton = document.getElementById("hit");
+hitButton.addEventListener("click",function(){
+
+});
+function addToYourValue(idOfValue,random_card){
+  
   //going to make it a binary search soon to speed up.
     if(stack_of_cards[random_card].rank==="2"){
     curVal+=2;
@@ -158,6 +162,52 @@ function addToValue(idOfValue,random_card){
                           }else if(stack_of_cards[random_card].rank==="ace"){
                             curVal+=10;
                             document.getElementById(idOfValue).innerHTML = "Current value: "+ curVal;
+                            }
+
+
+}
+function addToValueOfDealer(idOfValue,random_card){
+  
+  //going to make it a binary search soon to speed up.
+    if(stack_of_cards[random_card].rank==="2"){
+    curValofDealer+=2;
+    document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+    }else if(stack_of_cards[random_card].rank==="3"){
+      curValOfDealer+=3;
+      document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+      }else if(stack_of_cards[random_card].rank==="4"){
+        curValOfDealer+=4;
+        document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+        }else if(stack_of_cards[random_card].rank==="5"){
+          curValOfDealer+=5;
+          document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+          }else if(stack_of_cards[random_card].rank==="6"){
+            curValOfDealer+=6;
+            document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+            }else if(stack_of_cards[random_card].rank==="7"){
+              curValOfDealer+=7;
+              document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+              }else if(stack_of_cards[random_card].rank==="8"){
+                curValOfDealer+=8;
+                document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+                }else if(stack_of_cards[random_card].rank==="9"){
+                  curValOfDealer+=9;
+                  document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+                  }else if(stack_of_cards[random_card].rank==="10"){
+                    curValOfDealer+=10;
+                    document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+                    }else if(stack_of_cards[random_card].rank==="jack"){
+                      curValOfDealer+=10;
+                      document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+                      }else if(stack_of_cards[random_card].rank==="queen"){
+                        curValOfDealer+=10;
+                        document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+                        }else if(stack_of_cards[random_card].rank==="king"){
+                          curValOfDealer+=10;
+                          document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
+                          }else if(stack_of_cards[random_card].rank==="ace"){
+                            curValOfDealer+=10;
+                            document.getElementById(idOfValue).innerHTML = "Current value: "+ curValOfDealer;
                             }
 
 
